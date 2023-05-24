@@ -4,24 +4,24 @@ import '../models/movie.dart';
 
 class MovieDetail extends StatelessWidget {
   final Movie movie;
-  final String imgPath = 'https://image.tmdb.org/t/p/w500/';
+  String imgPath = 'https://image.tmdb.org/t/p/w500/';
 
   MovieDetail(this.movie);
 
   @override
   Widget build(BuildContext context) {
-    String path;
+    // String path;
     if (movie.posterPath != null) {
-      path = imgPath + movie.posterPath;
+      imgPath = imgPath + movie.posterPath;
     } else {
-      path =
+      imgPath =
           "https://images.freeimages.com/images/large-previews/5eb/movie-clapboard-1184339.jpg";
     }
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text(movie.title,
-            style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
+            style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -30,7 +30,7 @@ class MovieDetail extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(16),
                 height: height / 1.5,
-                child: Image.network(path),
+                child: Image.network(imgPath),
               ),
               Container(
                 child: Text(movie.overview),
